@@ -96,3 +96,4 @@ static/apidoc/
 
 # Config file
 data/config.ini
+node_modules/

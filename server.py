@@ -3,7 +3,7 @@
 import sys
 assert sys.version_info >= (3,0)
 
-from flask import Flask
+from flask import Flask, send_from_directory
 from flask_httpauth import HTTPBasicAuth
 from controller.data import DataController
 from controller.location import LocationController
@@ -45,6 +45,10 @@ def frontend_config_locations():
 @app.route('/about')
 def frontend_about():
 	return FrontendController().about()
+
+@app.route('/assets/<path:filename>')
+def assets(filename):
+    return send_from_directory("app", filename)
 
 @app.route('/api/1.0/data/trigger')
 @auth.login_required
